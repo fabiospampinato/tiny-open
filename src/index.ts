@@ -4,22 +4,25 @@
 import {execFile} from 'node:child_process';
 import os from 'node:os';
 import process from 'node:process';
+import type {Options} from './types';
 
 /* MAIN */
 
-const open = ( path: string ): void => {
+const open = ( path: string, options?: Options ): void => {
+
+  const app = options?.app;
 
   if ( process.platform === 'win32' || ( process.platform === 'linux' && os.release ().toLowerCase ().includes ( 'windows' ) ) ) {
 
-    execFile ( 'cmd.exe', ['/c', 'start', '', path.replace ( /[&^]/g, '^$&' )] );
+    execFile ( 'cmd.exe', ['/c', 'start', app || '', path.replace ( /[&^]/g, '^$&' )] );
 
   } else if ( process.platform === 'linux' ) {
 
-    execFile ( 'xdg-open', [path] );
+    execFile ( app || 'xdg-open', [path] );
 
   } else if ( process.platform === 'darwin' ) {
 
-    execFile ( 'open', [path] );
+    execFile ( 'open', app ? ['-a', app, path] : [path] );
 
   } else {
 
@@ -32,3 +35,4 @@ const open = ( path: string ): void => {
 /* EXPORT */
 
 export default open;
+export type {Options};
