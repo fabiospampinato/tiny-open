@@ -16,9 +16,11 @@ npm install --save tiny-open
 import open from 'tiny-open';
 
 // Open a file
+
 open ( '/path/to/some/file.txt' );
 
 // Open a URL
+
 open ( 'https://google.com' );
 
 // Open a URL with a custom application
