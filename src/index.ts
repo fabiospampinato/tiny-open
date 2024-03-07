@@ -6,6 +6,8 @@ import type {Options} from './types';
 
 /* MAIN */
 
+//TODO: Add some introspection/error handling
+
 const open = ( path: string, options?: Options ): void => {
 
   const app = options?.app;
