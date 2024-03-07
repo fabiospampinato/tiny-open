@@ -2,7 +2,7 @@
   "name": "tiny-open",
   "repository": "github:fabiospampinato/tiny-open",
   "description": "A tiny utility for opening a file or a URL with its default application, or a custom one.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
