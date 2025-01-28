@@ -12,6 +12,7 @@
     "clean": "tsex clean",
     "compile": "tsex compile",
     "compile:watch": "tsex compile --watch",
+    "test": "node ./test/index.js",
     "prepublishOnly": "tsex prepare"
   },
   "keywords": [
