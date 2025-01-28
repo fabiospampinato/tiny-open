@@ -5,7 +5,7 @@ import open from '../dist/index.js';
 
 /* MAIN */
 
-const URL = 'https://google.com';
+const URL = 'https://example.com';
 
 const chrome = await open ( URL, { app: 'google chrome' } );
 const firefox = await open ( URL, { app: 'firefox' } );
