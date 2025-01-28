@@ -6,23 +6,21 @@ import type {Options} from './types';
 
 /* MAIN */
 
-//TODO: Add some introspection/error handling
-
-const open = ( path: string, options?: Options ): void => {
+const open = ( path: string, options?: Options ): Promise<boolean> => {
 
   const app = options?.app;
 
   if ( process.platform === 'win32' ) {
 
-    spawnBin ( 'cmd.exe', ['/c', 'start', app || '', path.replace ( /[&^]/g, '^$&' )] );
+    return spawnBin ( 'cmd.exe', ['/c', 'start', app || '', path.replace ( /[&^]/g, '^$&' )] );
 
   } else if ( process.platform === 'linux' ) {
 
-    spawnBin ( app || 'xdg-open', [path] );
+    return spawnBin ( app || 'xdg-open', [path] );
 
   } else if ( process.platform === 'darwin' ) {
 
-    spawnBin ( 'open', app ? ['-a', app, path] : [path] );
+    return spawnBin ( 'open', app ? ['-a', app, path] : [path] );
 
   } else {
 
